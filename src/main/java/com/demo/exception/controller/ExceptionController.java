@@ -12,7 +12,12 @@ public class ExceptionController {
 
 	@ExceptionHandler(UserNotFoundException.class)
 	public ResponseEntity<?> exceptionHandle(UserNotFoundException ex) {
-		return new ResponseEntity<>("User Not Found", HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+	}
+
+	@ExceptionHandler(IllegalArgumentException.class)
+	public ResponseEntity<?> exceptionHandle(IllegalArgumentException ex) {
+		return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
 	}
 
 }
