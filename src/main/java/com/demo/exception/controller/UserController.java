@@ -4,14 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.demo.exception.service.UserService;
 
 @Controller
-@RequestMapping("/user")
 public class UserController {
 
 	@Autowired
@@ -29,4 +28,11 @@ public class UserController {
 		return new ResponseEntity<>(userService.userById(id), HttpStatus.OK);
 	}
 
+	@GetMapping("/")
+	public String index(final Model model) {
+		System.err.println("::: UserController.index :::");
+		model.addAttribute("title", "Docker With Spring Boot");
+		model.addAttribute("msg", "Welcome to the docker container!");
+		return "index";
+	}
 }

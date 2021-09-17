@@ -12,7 +12,7 @@
 	<groupId>com.demo.exception</groupId>
 	<artifactId>globalexceptionsdemo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>globalexceptionsdemo</name>
 	<description>Demo project for Handle Global Exceptions</description>
 	<properties>
@@ -38,6 +38,10 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 	</dependencies>
 
