@@ -1,4 +1,4 @@
-# SpringBoot_ExceptionHandling
+# Exception Handling with Spring
 
 Spring supports exception handling by a global Exception Handler (@ExceptionHandler) with Controller Advice (@ControllerAdvice). 
 This enables a mechanism that makes ResponseEntity work with the type safety and flexibility of @ExceptionHandler.
