@@ -11,8 +11,8 @@ import com.demo.exception.handler.UserNotFoundException;
 public class ExceptionController {
 
 	@ExceptionHandler(UserNotFoundException.class)
-	public ResponseEntity<?> exceptionHandle(UserNotFoundException ex) {
-		return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+	public String exceptionHandle(UserNotFoundException ex) {
+		return "error";
 	}
 
 	@ExceptionHandler(IllegalArgumentException.class)

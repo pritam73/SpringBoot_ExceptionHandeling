@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.demo.exception.service.UserService;
 
@@ -15,6 +16,24 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+
+	@GetMapping("/")
+	public String index(Model model) {
+		System.err.println("::: UserController.index :::");
+		model.addAttribute("title", "Global Exception Handling With Spring Boot");
+		model.addAttribute("msg", "Welcome to Dashboard!");
+		model.addAttribute("userList", userService.userList());
+		return "index";
+	}
+
+	@GetMapping("/getUserById")
+	public String getUserById(Model model, @RequestParam("id") Long id) {
+		System.err.println("::: UserController.getUserById :::");
+		model.addAttribute("title", "Global Exception Handling With Spring Boot");
+		model.addAttribute("msg", "Welcome User!!");
+		model.addAttribute("userList", userService.userById(id));
+		return "user";
+	}
 
 	@GetMapping("/userList")
 	public ResponseEntity<?> userList() {
@@ -26,13 +45,5 @@ public class UserController {
 	public ResponseEntity<?> userById(@PathVariable("id") Long id) {
 		System.err.println("::: UserController.userById :::");
 		return new ResponseEntity<>(userService.userById(id), HttpStatus.OK);
-	}
-
-	@GetMapping("/")
-	public String index(final Model model) {
-		System.err.println("::: UserController.index :::");
-		model.addAttribute("title", "Docker With Spring Boot");
-		model.addAttribute("msg", "Welcome to the docker container!");
-		return "index";
 	}
 }

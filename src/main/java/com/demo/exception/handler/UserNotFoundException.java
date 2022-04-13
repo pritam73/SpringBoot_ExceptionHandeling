@@ -6,6 +6,5 @@ public class UserNotFoundException extends IllegalArgumentException {
 
 	public UserNotFoundException(Long id) {
 		super(String.format("User with Id %d not found", id));
-		System.out.println("Exception Occured :::");
 	}
 }
