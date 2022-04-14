@@ -10,14 +10,16 @@ import com.demo.exception.handler.UserNotFoundException;
 @ControllerAdvice
 public class ExceptionController {
 
+	// For UI Pages
 	@ExceptionHandler(UserNotFoundException.class)
-	public String exceptionHandle(UserNotFoundException ex) {
+	public String userNotFoundException(UserNotFoundException ex) {
 		return "error";
 	}
 
+	// For REST APIs
 	@ExceptionHandler(IllegalArgumentException.class)
-	public ResponseEntity<?> exceptionHandle(IllegalArgumentException ex) {
-		return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+	public ResponseEntity<?> illegalArgumentException(IllegalArgumentException ex) {
+		return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
 	}
 
 }
